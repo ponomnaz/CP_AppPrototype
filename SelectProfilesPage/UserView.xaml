@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CP_AppPrototype.SelectProfilesPage.UserView"
+             xmlns:viewModel="clr-namespace:CP_AppPrototype.SelectProfilesPage"
+             xmlns:converters="clr-namespace:CP_AppPrototype.SelectProfilesPage.Converters"
+             xmlns:controls="clr-namespace:CP_AppPrototype.SelectProfilesPage.Controls">
+
+    <!-- Resources for converters -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:EnumBooleanConverter x:Key="EnumBooleanConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- Binding the page to the UserViewModel -->
+    <ContentPage.BindingContext>
+        <viewModel:UserViewModel/>
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <!-- Entry for the user to input their name -->
+            <Entry Margin="0,50,0,0"
+                   Placeholder="Enter your name"
+                   Text="{Binding Name}">
+            </Entry>
+
+            <!-- Label to show name validation warning -->
+            <Label Text="{Binding NameWarning}" IsVisible="{Binding NotValidName}" TextColor="Red"/>
+
+            <!-- DatePicker for the user to select their birth date -->
+            <DatePicker
+                    Date="{Binding BirthDay}">
+            </DatePicker>
+
+            <!-- Gender selection with checkboxes -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Image HeightRequest="30" WidthRequest="30" Source="male.jpg"/>
+                <Label Text="Male"/>
+                <CheckBox IsChecked="{Binding Gender, 
+                        Converter={StaticResource EnumBooleanConverter},
+                        ConverterParameter=Male}"/>
+
+                <Image HeightRequest="30" WidthRequest="30" Source="female.jpg"/>
+                <Label Text="Female"/>
+                <CheckBox IsChecked="{Binding Gender, 
+                        Converter={StaticResource EnumBooleanConverter},
+                        ConverterParameter=Female}"/>
+            </HorizontalStackLayout>
+
+            <!-- Buttons for saving or deleting the profile -->
+            <HorizontalStackLayout Spacing="100" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <Button Text="Save"
+                        Command="{Binding SaveCommand}"/>
+
+                <Button Text="Delete"
+                        Command="{Binding DeleteCommand}"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

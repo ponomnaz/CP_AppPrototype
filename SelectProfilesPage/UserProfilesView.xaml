@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CP_AppPrototype.SelectProfilesPage.UserProfilesView"
+             xmlns:viewModel="clr-namespace:CP_AppPrototype.SelectProfilesPage"
+             NavigatedTo="ContentPage_NavigatedTo">
+
+    <ContentPage.BindingContext>
+        <viewModel:UserProfilesViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Command="{Binding CreateProfileCommand}" IconImageSource="{FontImage Glyph='+', Color=White, Size=22}" />
+    </ContentPage.ToolbarItems>
+
+    <CollectionView x:Name="profilesCollection"
+                    ItemsSource="{Binding Profiles}"
+                    Margin="20"
+                    SelectionMode="Single"
+                    SelectionChangedCommand="{Binding SelectProfileCommand}"
+                    SelectionChangedCommandParameter="{Binding Source={RelativeSource Self}, Path=SelectedItem}">
+
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Vertical" ItemSpacing="40" />
+        </CollectionView.ItemsLayout>
+
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <VerticalStackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <HorizontalStackLayout Spacing="100" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding Name}" FontSize="30"/>
+                        <Button Text="Play" Command="{Binding PlayCommand}" FontSize="15" HeightRequest="50" WidthRequest="100"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+</ContentPage>

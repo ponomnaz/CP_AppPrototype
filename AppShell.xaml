@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CP_AppPrototype.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CP_AppPrototype"
+    Shell.FlyoutBehavior="Disabled"
+    Title="CP_AppPrototype">
+
+    <ShellContent
+        ContentTemplate="{DataTemplate local:MainMenuView}"
+        Route="MainMenuView" />
+
+</Shell>

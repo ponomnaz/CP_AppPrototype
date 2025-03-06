@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CP_AppPrototype.MainMenuView"
+             xmlns:viewModel="clr-namespace:CP_AppPrototype.MainMenu">
+
+    <!-- Binding the page to the MainMenuViewModel -->
+    <ContentPage.BindingContext>
+        <viewModel:MainMenuViewModel/>
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <VerticalStackLayout Padding="30,0" Spacing="40" 
+                            HorizontalOptions="CenterAndExpand" 
+                            VerticalOptions="CenterAndExpand">
+
+            <!-- Button to navigate to the child profile selection page -->
+            <Button HorizontalOptions="Fill"
+                    Text="Select child profile" 
+                    SemanticProperties.Hint="Goes to the page for selecting a child’s profile"
+                    Command="{Binding SelectProfileCommand}"/>
+
+            <!-- Button to exit the application -->
+            <Button HorizontalOptions="Fill"
+                    Text="Exit" 
+                    SemanticProperties.Hint="Closes the application"
+                    Command="{Binding ExitCommand}"/>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>
