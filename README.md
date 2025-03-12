@@ -1,6 +1,8 @@
 Cerebral Palsy Children's App Prototype
 A prototype mobile application designed to assist children with cerebral palsy in cognitive and motor skill development.
 
+![image](https://github.com/user-attachments/assets/0c9852fa-ae4f-4daf-8812-801b842b4768)
+
 
 
 
@@ -46,6 +48,3 @@ GameViewModel.cs – Manages game logic, shape generation, and game state.
 GameView.xaml – UI layout for the game screen.
 UserProfilesViewModel.cs – Handles user profile selection and management.
 MainMenuView.xaml – The main entry point of the application.
-
-📸 Screenshots & Demo
-
